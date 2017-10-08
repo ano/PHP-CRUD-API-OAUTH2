@@ -1,0 +1,16 @@
+{
+    "name": "viviki/api",
+    "description": "Add OAuth to PHP-CRUD-API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ano Tisam",
+            "email": "an0tis@gmail.com"
+        }
+    ],
+    "require": {
+		"mevdschee/php-crud-api": "dev-master",
+		"bshaffer/oauth2-server-php": "~1.8"
+	}
+}
