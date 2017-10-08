@@ -2,22 +2,30 @@
 
 	require_once("./vendor/autoload.php");
 	
-	/* Start hacking Shit */
+	/* 
 	
-	$api = new PHP_CRUD_API(array(
-		'dbengine'=>'MySQL',
-		'hostname'=>'localhost',
-		'port'=>'3306',
-		'username'=>'root',
-		'password'=>'',
-		'database'=>'govfish',
-	));
+		1. Check if user is authorised using OAuth2, if authorised connect to database to Expose to API 
 	
-	$api->executeCommand();
+	*/
+	if (oauth()){
+		$api = new PHP_CRUD_API(array(
+			'dbengine'=>'MySQL',
+			'hostname'=>'localhost',
+			'port'=>'3306',
+			'username'=>'root',
+			'password'=>'',
+			'database'=>'govfish',
+			'table_authorizer'=>function($cmd,$db,$tab) { return true; },
+
+		));	
+		$api->executeCommand();
+	}
+	else{
+		echo "Sorry Mate, You cant touch this!";
+	}
 	
-	$user = array(
-		"username" => "John", 
-		"password" => "123"
-	);
+	function oauth(){
+		return false;
+	}
 
 ?>
